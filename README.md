@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# StudyPlannerOneApp
 
-First, run the development server:
+**StudyPlannerOneApp** é uma aplicação web responsiva criada para ajudar as pessoas a planejar seus estudos de forma eficiente. O objetivo é permitir que os usuários calculem quantos dias de estudo são necessários para concluir um curso, considerando a quantidade de horas de estudo diárias.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A aplicação foi construída com **Next.js** e **React Native** para uma experiência fluida e interativa. A interface foi otimizada com **Tailwind CSS** para garantir um design moderno e responsivo.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Usadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: Framework React que oferece renderização do lado do servidor e facilita a criação de aplicações web rápidas e escaláveis.
+- **React Native**: Biblioteca para a criação de aplicativos móveis nativos usando JavaScript e React.
+- **Tailwind CSS**: Framework de CSS utilitário para estilização rápida e personalizada.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática para melhorar a manutenção e escalabilidade do código.
+- **PostCSS**: Ferramenta para transformar CSS com o uso de plugins, permitindo funcionalidades como autoprefixing e minificação.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades
 
-## Learn More
+- Cálculo automático de dias de estudo necessários para concluir um curso com base nas horas de estudo diárias.
+- Interface interativa e responsiva, otimizada para dispositivos móveis e desktop.
+- Estilização com **Tailwind CSS** para uma aparência moderna e clean.
+- Fácil de usar e intuitiva.
 
-To learn more about Next.js, take a look at the following resources:
+## Como Rodar o Projeto Localmente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Para rodar este projeto localmente, siga os passos abaixo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone o repositório:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/dlucioyauh/StudyPlannerOneApp.git
+   cd StudyPlannerOneApp
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Instale as dependências:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npm install
+   ```
+
+3. Execute o servidor de desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Acesse a aplicação em `http://localhost:3000`.
+
+## Link para Teste
+
+Você pode testar a aplicação online através do seguinte link:
+
+[StudyPlannerOneApp na Vercel](https://study-planner-one-me5vaz35d-dlucioyauhs-projects.vercel.app/)
+
+## Como Contribuir
+
+Gostou do projeto? Ajude-nos a torná-lo ainda melhor!
+
+- Dê um **Star** no repositório para mostrar seu apoio.
+- Faça um **Fork** do projeto, adicione suas melhorias e abra um **Pull Request**.
+- Compartilhe suas ideias, sugestões ou problemas abertos no **Issues**.
+
+### Licença
+
+Este projeto é licenciado sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+Feito com destreza por **Douglas Lucio** - **IONKOD**
