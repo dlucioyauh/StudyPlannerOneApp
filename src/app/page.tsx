@@ -17,7 +17,11 @@ export default function Home() {
   const calcularFalta = () => {
     const horasRestantes = totalHoras * ((100 - porcentagemEstudada) / 100); // Calcula as horas restantes
     const diasRestantes = calcularDiasRestantes(inicio, final); // Função para calcular os dias restantes
-    const horasPorDia = horasRestantes / diasRestantes; // Calcula as horas necessárias por dia para completar o curso
+
+    // Calculando as horas por dia considerando o sábado e domingo
+    const diasUteis = diasRestantes - (Math.floor(diasRestantes / 7) * 2); // Subtrai os fins de semana
+    const horasPorDia = horasRestantes / diasUteis; // Calcula as horas necessárias por dia para completar o curso
+
     const horasPorDiaEstudandoMais = horasPorDia + 2; // Exemplo: adicionar mais 2 horas por dia para terminar mais rápido
 
     // Calculando a nova data de conclusão com o aumento de horas por dia
