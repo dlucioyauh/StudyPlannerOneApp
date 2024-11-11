@@ -1,4 +1,4 @@
-'use client';  // Adicione esta linha no topo do arquivo
+'use client';
 
 import { useState } from "react";
 
@@ -7,6 +7,8 @@ export default function Home() {
   const [inicio, setInicio] = useState(""); // Data de início
   const [final, setFinal] = useState(""); // Data final
   const [totalHoras, setTotalHoras] = useState(0); // Total de horas de curso
+  const [diasSemana, setDiasSemana] = useState(0); // Dias da semana para estudar
+  const [horasSegSex, setHorasSegSex] = useState(0); // Horas diárias de Segunda a Sexta
   const [horasSábado, setHorasSábado] = useState(0); // Horas no sábado
   const [horasDomingo, setHorasDomingo] = useState(0); // Horas no domingo
   const [resultado, setResultado] = useState(""); // Resultado de cálculo de horas restantes
@@ -18,18 +20,21 @@ export default function Home() {
     const horasRestantes = totalHoras * ((100 - porcentagemEstudada) / 100); // Calcula as horas restantes
     const diasRestantes = calcularDiasRestantes(inicio, final); // Função para calcular os dias restantes
 
-    // Calculando as horas por dia considerando o sábado e domingo
-    const diasUteis = diasRestantes - (Math.floor(diasRestantes / 7) * 2); // Subtrai os fins de semana
-    const horasPorDia = horasRestantes / diasUteis; // Calcula as horas necessárias por dia para completar o curso
+    // Total de horas que o usuário pode estudar por semana
+    const horasPorSemana = (horasSegSex * 5) + horasSábado + horasDomingo;
 
-    const horasPorDiaEstudandoMais = horasPorDia + 2; // Exemplo: adicionar mais 2 horas por dia para terminar mais rápido
+    // Calcula quantas semanas restam para concluir
+    const semanasRestantes = horasRestantes / horasPorSemana;
 
-    // Calculando a nova data de conclusão com o aumento de horas por dia
-    const novaDataConclusao = calcularNovaDataConclusao(inicio, diasRestantes, horasPorDiaEstudandoMais);
+    // Calcula a nova data de conclusão
+    const novaDataConclusao = calcularNovaDataConclusao(inicio, semanasRestantes);
+
+    // Calcula as horas que o usuário precisa estudar por dia para terminar o curso
+    const horasPorDia = (horasRestantes / diasRestantes).toFixed(2);
 
     setResultado(`Você completou ${porcentagemEstudada}% do curso. Faltam ${100 - porcentagemEstudada}% para concluir.`);
     setDataConclusao(`Com as horas diárias ajustadas, você concluirá o curso em: ${novaDataConclusao}`);
-    setHorasPorDia(parseFloat(horasPorDiaEstudandoMais.toFixed(2))); // Exibe as horas por dia com 2 casas decimais
+    setHorasPorDia(horasPorDia); // Exibe as horas por dia necessárias
   };
 
   // Função para calcular a quantidade de dias restantes
@@ -40,11 +45,11 @@ export default function Home() {
     return Math.floor(tempoRestante / (1000 * 3600 * 24)); // Converte milissegundos para dias
   };
 
-  // Função para calcular a nova data de conclusão
-  const calcularNovaDataConclusao = (inicio: string, diasRestantes: number, horasPorDia: number) => {
-    const diasAdicionais = (totalHoras * ((100 - porcentagemEstudada) / 100)) / horasPorDia; // Calcula quantos dias adicionais são necessários
+  // Função para calcular a nova data de conclusão com base nas semanas restantes
+  const calcularNovaDataConclusao = (inicio: string, semanasRestantes: number) => {
     const dataInicio = new Date(inicio);
-    dataInicio.setDate(dataInicio.getDate() + Math.ceil(diasAdicionais)); // Adiciona os dias ao tempo de início
+    const diasRestantes = semanasRestantes * 7; // Convertendo semanas restantes para dias
+    dataInicio.setDate(dataInicio.getDate() + Math.ceil(diasRestantes)); // Adiciona os dias ao tempo de início
     return dataInicio.toLocaleDateString(); // Retorna a data formatada
   };
 
@@ -89,6 +94,26 @@ export default function Home() {
               type="number"
               value={totalHoras}
               onChange={(e) => setTotalHoras(Number(e.target.value))}
+              className="border p-2 rounded-md"
+            />
+          </div>
+
+          <div>
+            <label className="block">Dias da semana para estudar:</label>
+            <input
+              type="number"
+              value={diasSemana}
+              onChange={(e) => setDiasSemana(Number(e.target.value))}
+              className="border p-2 rounded-md"
+            />
+          </div>
+
+          <div>
+            <label className="block">Horas diárias de estudo (Segunda a Sexta):</label>
+            <input
+              type="number"
+              value={horasSegSex}
+              onChange={(e) => setHorasSegSex(Number(e.target.value))}
               className="border p-2 rounded-md"
             />
           </div>
@@ -154,12 +179,12 @@ export default function Home() {
       </div>
 
       {/* Botão "Compartilhe, ou siga-nos" */}
-        <button
-            onClick={redirecionarParaGitHub}  // Se deseja manter o redirecionamento para o GitHub
-            className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition-all mt-6"
-        >
-  Compartilhe, ou siga-nos
-</button>
+      <button
+        onClick={redirecionarParaGitHub}
+        className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition-all mt-6"
+      >
+        Compartilhe, ou siga-nos
+      </button>
     </div>
   );
 }
