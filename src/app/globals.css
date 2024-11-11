@@ -5,22 +5,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --button-bg: #38a169; /* Cor do botão */
-  --button-hover-bg: #2f855a; /* Cor do botão ao passar o mouse */
-  --input-bg: #f7fafc; /* Cor de fundo do input */
-  --input-border: #e2e8f0; /* Cor da borda do input */
-  --input-focus-border: #48bb78; /* Cor da borda do input ao focar */
+  --button-bg: #38a169; 
+  --button-hover-bg: #2f855a; 
+  --input-bg: #f7fafc; 
+  --input-border: #e2e8f0; 
+  --input-focus-border: #48bb78; 
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
     --button-bg: #38a169;
     --button-hover-bg: #2f855a;
-    --input-bg: #2d3748; /* Cor de fundo do input no tema escuro */
-    --input-border: #4a5568; /* Cor da borda do input no tema escuro */
-    --input-focus-border: #68d391; /* Cor da borda do input ao focar no tema escuro */
+    --input-bg: #2d3748; 
+    --input-border: #4a5568; 
+    --input-focus-border: #68d391; 
   }
 }
 
