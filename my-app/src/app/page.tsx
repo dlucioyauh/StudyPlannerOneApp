@@ -2,18 +2,30 @@
 
 import { useState } from "react";
 
+// Definindo a interface para os dias de estudo
+interface DiasEstudo {
+  segunda: boolean;
+  terca: boolean;
+  quarta: boolean;
+  quinta: boolean;
+  sexta: boolean;
+}
+
 export default function Home() {
   const [porcentagemEstudada, setPorcentagemEstudada] = useState(0);
   const [inicio, setInicio] = useState("");
   const [final, setFinal] = useState("");
   const [totalHoras, setTotalHoras] = useState(0);
-  const [diasEstudo, setDiasEstudo] = useState({
+  
+  // Definindo o tipo do estado diasEstudo
+  const [diasEstudo, setDiasEstudo] = useState<DiasEstudo>({
     segunda: false,
     terca: false,
     quarta: false,
     quinta: false,
     sexta: false,
   });
+
   const [horasSegSex, setHorasSegSex] = useState(0);
   const [horasSábado, setHorasSábado] = useState(0);
   const [horasDomingo, setHorasDomingo] = useState(0);
@@ -66,7 +78,8 @@ export default function Home() {
     return (horasRestantes / totalDiasEstudo).toFixed(2);
   };
 
-  const handleCheckboxChange = (dia: string) => {
+  // Atualizando a tipagem da função handleCheckboxChange
+  const handleCheckboxChange = (dia: keyof DiasEstudo) => {
     setDiasEstudo((prevState) => ({
       ...prevState,
       [dia]: !prevState[dia],
@@ -107,8 +120,8 @@ export default function Home() {
             <label>Dias da semana para desenvolver ou estudar:</label>
             <div className="flex justify-between space-x-6 flex-wrap">
               {["segunda", "terca", "quarta", "quinta", "sexta"].map((dia) => (
-                <label key={dia} className={`flex items-center justify-center w-12 h-12 cursor-pointer p-2 rounded-md border ${diasEstudo[dia as keyof typeof diasEstudo] ? "bg-blue-500 text-white border-blue-500" : "border-gray-300"}`}>
-                  <input type="checkbox" checked={diasEstudo[dia as keyof typeof diasEstudo]} onChange={() => handleCheckboxChange(dia)} className="hidden" />
+                <label key={dia} className={`flex items-center justify-center w-12 h-12 cursor-pointer p-2 rounded-md border ${diasEstudo[dia as keyof DiasEstudo] ? "bg-blue-500 text-white border-blue-500" : "border-gray-300"}`}>
+                  <input type="checkbox" checked={diasEstudo[dia as keyof DiasEstudo]} onChange={() => handleCheckboxChange(dia as keyof DiasEstudo)} className="hidden" />
                   <span className="capitalize">{dia.charAt(0).toUpperCase() + dia.slice(1, 3)}</span>
                 </label>
               ))}
@@ -152,8 +165,8 @@ export default function Home() {
         )}
 
         <div className="mt-4">
-          <button onClick={redirecionarParaGitHub} className="bg-gray-600 text-white px-4 py-2 rounded-md">
-            Acessar o Repositório no GitHub
+          <button onClick={redirecionarParaGitHub} className="bg-gray-800 text-white px-4 py-2 rounded-md">
+            Ver código no GitHub
           </button>
         </div>
       </div>
