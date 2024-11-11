@@ -25,7 +25,7 @@ export default function Home() {
 
     setResultado(`Você completou ${porcentagemEstudada}% do curso. Faltam ${100 - porcentagemEstudada}% para concluir.`);
     setDataConclusao(`Com as horas diárias ajustadas, você concluirá o curso em: ${novaDataConclusao}`);
-    setHorasPorDia(horasPorDiaEstudandoMais.toFixed(2)); // Exibe as horas por dia com 2 casas decimais
+    setHorasPorDia(parseFloat(horasPorDiaEstudandoMais.toFixed(2))); // Exibe as horas por dia com 2 casas decimais
   };
 
   // Função para calcular a quantidade de dias restantes
