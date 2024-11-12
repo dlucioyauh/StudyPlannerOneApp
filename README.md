@@ -49,7 +49,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
 
 Você pode testar a aplicação online através do seguinte link:
 
-[StudyPlannerOneApp na Vercel](https://study-planner-one-me5vaz35d-dlucioyauhs-projects.vercel.app/)
+[StudyPlannerOneApp na Vercel](https://study-planner-one-app.vercel.app/)
 
 ## Como Contribuir
 
